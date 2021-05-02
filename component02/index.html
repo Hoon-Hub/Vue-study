@@ -13,7 +13,7 @@
     }
     li span.done {
         text-decoration:line-through;
-    }
+    } 
 </style>
 <body>
     <div id="app">
@@ -23,7 +23,7 @@
                 v-bind:todo="todo"></my-todo-item>
         </ul>
 
-        
+
         <ul>
             <my-todo-item v-for="todo in todos2"
                 v-bind:key="todo.id"

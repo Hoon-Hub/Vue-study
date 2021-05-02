@@ -9,4 +9,4 @@ const vm = new Vue({
             this.toggle = !this.toggle 
         }
     }
-})
+}) 
