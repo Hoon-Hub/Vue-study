@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ msgA }}</div>
+        <div >{{ msgB }}</div>
+        <button v-on:click="changeMessage">Change</button0>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msgA: 'Message A.',
+                msgB: ''
+            },
+            methods: {
+                changeMessage(){
+                    this.msgA = 'Changed message A!'
+                    this.msgB = 'Changed message B!'
+                }
+            },
+            computed: {},   //
+            watch: {   //반응성
+                msgA(value){
+                    //data가 변경될 때마다 실행 됨 
+                    console.log(value)
+                }
+            },
+            //life cycle hook
+            created(){
+
+            },
+            mounted(){
+
+            }
+            
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>
