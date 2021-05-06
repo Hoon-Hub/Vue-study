@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<style>
+    .normal{
+        color: blue;
+    }
+    .active{
+        color: red;
+    }
+</style>
+<body>
+    <div id="app">
+        <div>표현식만 가능하다.</div>
+        <div>{{ number + 2}}</div>
+        <div>{{ new Date() }}</div>
+        <div>{{ Math.round('1.6') }}</div>
+        <hr><br><br><br>
+        <div v-bind:class="className">{{ msg }}</div>
+        <div :class="className" 
+            v-on:click="changeClassName">
+            v-bind는 생략이 가능하다 => :
+        </div>
+        <div :class="className" 
+            @click="changeClassName">
+            v-on은 생략이 가능하다 => @
+        </div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue!',
+                number: 2,
+                className: 'normal'
+            },
+            methods: {
+                changeClassName(){
+                    if(this.className==='normal'){
+                        this.className = 'active';
+                    }else{
+                        this.className = 'normal';
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
