@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div>특정한 데이터를 감시하고 있다가, 그 데이터가 변경되는 것을 감지하는 것 : watch</div>
+    <div id="app">
+        <div>{{  msg }}</div>
+        <div>{{  reversedMsg }}</div>
+
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data:{
+                msg: 'Hello Vue!'
+            },
+            computed: {
+                reversedMsg:{
+                    get(){
+                        return this.msg.split('').reverse().join('');
+                    },
+                    set(v){
+                        this.msg = v;
+                    }
+                }
+            },
+            watch: {
+                msg (newMsg) {
+                    console.log('New data : '+ newMsg);
+                },
+                reversedMsg (newMsg){
+                    console.log('New Reversed Msg : ' + newMsg);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
