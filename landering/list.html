@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div>list lendering 에서 push 할 때 값에 할당시키면 안된다.</div>
+    <div>javascript의 배열 변이 method 를 사용해야 한다.</div>
+    <div id="app">
+        <button @click="pushTodo">Push</button>
+        <ul class="todos">
+            <li v-for="(todo, index) in todos"
+                :key="index">
+                {{ todo.title }}
+            </li>
+        </ul>
+        <hr>
+        <div>객체 데이터를 반복적으로 사용할 때 주의할 점 2<br>
+            반응성 / 새로운 key를 추가할 때 반응 x<br>
+            1. 미리 정의하기 <br>
+            2.
+
+        </div>
+        <button @click="addHomepage">Add</button>
+        <ul class="heropy">
+            <li v-for="(value, key, index) in heropy"
+            :key="index">
+                {{ value }}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                    { title: '아침식사' },
+                    { title: '점심식사' },
+                    { title: '저녁식사' },
+                ],
+                heropy: {
+                    name: 'HEROPY',
+                    age: 333,
+                }
+            },
+            methods: {
+                pushTodo(){
+                    // this.todos.push({ title: '야식먹기' })
+                    this.$set(this.todos, 3, {title: '야식먹기!!'})
+                },
+                addHomepage () {
+                    this.$set(this.heropy, 'homepage', 'blog.address')
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
