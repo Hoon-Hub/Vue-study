@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <pre>
+        자식 컴포넌트를 통해 부모 컴포넌트를 수정하는 것은 위험하다.    
+        => 그래서 이벤트를 부모클래스에 만들어놓고, 자식 컴포넌트를 실행하면 부모 메서드를 호출 시켜준다.
+        => emit('이벤트명','내용')
+    </pre>
+    <div id="app">
+        <my-comp :my-msg="message" @my-event="updateMessage"></my-comp>
+    </div>
+
+
+    <script>
+        Vue.component('my-comp', {
+            template: '<div @click="updateMsg">{{ myMsg }}</div>',
+            props: {
+                myMsg: String
+            },
+            methods: {
+                updateMsg (){
+                    // this.myMsg = 'Good Day'
+                    this.$emit('my-event', 'Good Day~')    // 부모 요소로 이벤트를 전달
+                }
+            }
+        })
+
+
+        const vm = new Vue({
+            el: '#app',
+            data () {
+                return {
+                    message: 'Hello'
+                }
+            },
+            methods: {
+                updateMessage (value) {
+                    this.message = value
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
