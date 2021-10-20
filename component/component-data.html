@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app1">
+        <my-component />
+    </div>
+    <div id="app2">
+        <my-comp />
+    </div>
+    <script>
+        const myComp = {
+            template: '<div class="me">{{ message }}</div>',
+            data (){
+                return {
+                    message: 'Hello Vue!'
+                }
+            }
+        }
+
+
+        const vm1 = new Vue({
+            el: '#app1',
+            components: {
+                'my-component': myComp  //지역변수
+            }
+        })
+
+        const vm2 = new Vue({
+            el: '#app2',
+            components: {
+                'myComp': myComp
+            }
+        })
+    </script>
+</body>
+</html>

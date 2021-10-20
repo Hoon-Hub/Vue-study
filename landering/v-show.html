@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<style>
+    .box{
+        width:200px;
+        height:150px;
+        background-color: tomato;
+    }
+</style>
+<body>
+    <pre>
+        show 와 if의 차이
+        : if는 div 를 없애고 생성하는데,
+        : show 는 css부분만 건드린다 .
+    </pre>
+    <div id="app">
+        <button @click="toggle">Toggle</button>
+        <div v-if="show"
+            class="box"></div>
+    </div>
+    
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                toggle(){
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>
