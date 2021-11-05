@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width:100px; height:100px; background-color: blueviolet;
+    }
+</style>
+<body>
+    <div id="app">
+        <button @click="toggleBox">Toggle Box</button>
+        <test-box v-if="isVisable" />
+
+    </div>    
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+let app = Vue.createApp({
+    data() {
+        return {
+            isVisable : false,
+        }
+    },
+    methods:{
+        toggleBox: () => {
+            this.isVisable = !this.isVisable
+        }
+    },
+    updated() {
+        console.log('updated')
+    },
+    })
+
+    app.component('test-box', {
+        template: `
+            <div class="box"></div>
+        `,
+        created() {
+            console.log('created')
+        },
+        mounted () {
+            console.log('mounted')
+        },
+        unmounted () {
+            console.log('unmounted')
+        }
+    })
+
+    app.mount('#app')
+</script>
+</body>
+</html>
