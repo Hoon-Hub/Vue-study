@@ -1,56 +1,85 @@
 <template>
-  <div style="display:flex">
-      <div>
-        <p>Carrots</p>
-        <span>Quantity</span>
-        <input type="number" 
-          v-model.number="inventory.carrots" /><br>
-        <button @click="addToCart('carrots', inventory.carrots)">Add to Cart</button>
-      </div>
-      <div>
-        <p>pineapples</p>
-        <span>Quantity</span>
-        <input type="number" v-model.number="inventory.pineapples" />
-        <button @click="addToCart('pineapples', inventory.pineapples)">Add to Cart</button>
-
-      </div>
-      <div>
-        <p>cherries</p>
-        <span>Quantity</span>
-        <input type="number" v-model.number="inventory.cherries" />
-        <button @click="addToCart('cherries', inventory.cherries)">Add to Cart</button>
-
-      </div>
+  <div style="">
+      <button  
+        @click="toggleSidebar"
+        style="position:absolute; top:0; right:0; width:50px; height:50px; margn-right:15px; margin-top:15px;">LIST</button>
+      <h1>Product Lists</h1>
+      <div style="display:flex; justify-content:space-evenly;; align-items:space-between; flex-wrap: wrap;">
+        <div v-for="(product, i) in inventory" :key="product.id">
+          <p><strong>{{ product.name }}</strong></p>
+          <p style="text-align:left;">상품분류: {{ product.type }}</p>
+          <p style="text-align:left;">상품가격: ${{ product.price.USD }}</p>
+          <span>Quantity</span>
+          <input type="number" 
+            v-model.number="product.quantity" /><br>
+          <button @click="addToCart(product.name, i)">Add to Cart</button><br>
+        </div>
+        <div>
+          <p>pineapples</p>
+          <span>Quantity</span>
+          <input type="number" v-model.number="inventory.pineapples" />
+          <button @click="addToCart('pineapples', inventory.pineapples)">Add to Cart</button>
+        </div>
+        <div>
+          <p>cherries</p>
+          <span>Quantity</span>
+          <input type="number" v-model.number="inventory.cherries" />
+          <button @click="addToCart('cherries', inventory.cherries)">Add to Cart</button>
+        </div>
+    </div>
+    <products 
+      v-if="showSidebar" 
+      :toggle="toggleSidebar" 
+      :cart="cart"
+      :inventory="inventory"
+      :removeItem="removeItem"
+      />
   </div>
 </template>
 
 <script>
+import Products from './views/products.vue'
 
 export default {
   name: 'App',
   components: {
+    Products
   },
   data () {
     return {
-      inventory: {
-        carrots: 3,
-        pineapples: 1,
-        cherries: 0,
-      },
-      cart: {
-        carrots: 0,
-        pineapples: 0,
-        cherries: 0,
-      }
+      showSidebar: false,
+      inventory: [],
+      cart: {}
     }
   },
   methods: {
-    addToCart( type ) {
+    addToCart( name, index ) {
+      if(!this.cart[name]) this.cart[name] = 0
+      console.log(name, index)
       //receive type and number
-      this.cart[type] += this.inventory[type]
+      this.cart[name] += this.inventory[index].qunatity
       console.log(this.cart)
+    },
+    toggleSidebar(){
+      this.showSidebar = !this.showSidebar
+    },
+    removeItem(name){
+      delete this.cart[name]
     }
+  },
+  async mounted () {
+    const res = await fetch('/js/food.json', 
+        { 
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+       }
+      )
+    const data = await res.json()
+    this.inventory = data
   }
+
 }
 </script>
 
