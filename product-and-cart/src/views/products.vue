@@ -21,7 +21,7 @@
                 <td>{{ quantity }}</td>
                 <td>${{ quantity * getPrice(key) }}</td>
                 <td><button 
-                    @click="removeItem(key)">
+                    @click="remove(key)">
                     Delete</button></td>
             </tr>
 
@@ -34,7 +34,7 @@
             </tfoot>
         </table>
         <p 
-            v-if="!Object.keys(cart).length"
+            v-if="Object.keys(cart).length < 1"
             style="text-align: center;">No items in cart</p>
       </div>
       
@@ -44,7 +44,7 @@
 <script>
 export default {
     props:[
-        'toggle','cart','inventory', 'removeItem'
+        'toggle','cart','inventory', 'remove'
     ],
     computed: {
        

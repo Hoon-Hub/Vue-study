@@ -2,7 +2,7 @@
   <div style="">
       <button  
         @click="toggleSidebar"
-        style="position:absolute; top:0; right:0; width:50px; height:50px; margn-right:15px; margin-top:15px;">LIST</button>
+        style="position:absolute; top:0; right:0; width:50px; height:50px; margn-right:15px; margin-top:15px;">Cart ({{ totalQuantity }})</button>
       <h1>Product Lists</h1>
       <div style="display:flex; justify-content:space-evenly;; align-items:space-between; flex-wrap: wrap;">
         <div v-for="(product, i) in inventory" :key="product.id">
@@ -32,7 +32,7 @@
       :toggle="toggleSidebar" 
       :cart="cart"
       :inventory="inventory"
-      :removeItem="removeItem"
+      :remove="removeItem"
       />
   </div>
 </template>
@@ -52,13 +52,21 @@ export default {
       cart: {}
     }
   },
+  computed: {
+    totalQuantity () {
+      return Object.values(this.cart).reduce((acc, curr) => {
+        return acc + curr
+      }, 0)
+
+    }
+  },
   methods: {
     addToCart( name, index ) {
       if(!this.cart[name]) this.cart[name] = 0
-      console.log(name, index)
       //receive type and number
-      this.cart[name] += this.inventory[index].qunatity
-      console.log(this.cart)
+      this.cart[name] += this.inventory[index].quantity
+      this.inventory[index].quantity = 0
+      
     },
     toggleSidebar(){
       this.showSidebar = !this.showSidebar
