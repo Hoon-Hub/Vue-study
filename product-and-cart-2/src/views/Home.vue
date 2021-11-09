@@ -9,23 +9,11 @@
             v-model.number="product.quantity" /><br>
           <button @click="addToCart(product.name, i)">Add to Cart</button><br>
         </div>
-        <div>
-          <p>pineapples</p>
-          <span>Quantity</span>
-          <input type="number" v-model.number="inventory.pineapples" />
-          <button @click="addToCart('pineapples', inventory.pineapples)">Add to Cart</button>
-        </div>
-        <div>
-          <p>cherries</p>
-          <span>Quantity</span>
-          <input type="number" v-model.number="inventory.cherries" />
-          <button @click="addToCart('cherries', inventory.cherries)">Add to Cart</button>
-        </div>
     </div>
 </template>
 
 <script>
-import food from '../food.json'
+import food from '../../public/food.json'
 
 export default {
   name: 'Home',
