@@ -1,0 +1,50 @@
+[33mcommit 91b74ba7b215c86b0f7b89d5dc227641e958894d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Hoon-Hub <53948297+Hoon-Hub@users.noreply.github.com>
+Date:   Tue Nov 9 10:10:37 2021 +0900
+
+    completed
+    
+    completed vue course.
+    but there's no styles in.
+
+[33mcommit fbcfbf9e848e6b88637a560b05805b6fda2a0f90[m
+Author: Hoon-Hub <53948297+Hoon-Hub@users.noreply.github.com>
+Date:   Mon Nov 8 23:51:24 2021 +0900
+
+    crashed on json import error
+
+[33mcommit bdda124d7430b6bdba1e3628932c4464a8d34f37[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Mon Nov 8 10:47:25 2021 +0900
+
+    cli project added
+
+[33mcommit 46875820fbc704660aeed834fafaeaf52dcc3293[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Mon Nov 8 10:13:27 2021 +0900
+
+    components
+
+[33mcommit 2da67d2b3ac67214ce3f80918e4afc61a8fa45f4[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Fri Nov 5 17:27:55 2021 +0900
+
+    function added
+
+[33mcommit e8462d8caf76998eb71d11b8fb46f052ac79a381[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Fri Nov 5 14:47:41 2021 +0900
+
+    shopping cart add function
+
+[33mcommit ede87967668ad85d5e53db588027e65a58534c78[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Fri Nov 5 13:57:48 2021 +0900
+
+    update
+
+[33mcommit 0828ece3e8b1e91336080b480e1d35b6ee3dd161[m
+Author: Hoon-Hub <gwi01304@naver.com>
+Date:   Wed Oct 20 18:06:36 2021 +0900
+
+    vue modal updated
